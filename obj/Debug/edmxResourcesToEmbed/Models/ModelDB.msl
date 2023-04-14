@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBRENTModelStoreContainer" CdmEntityContainer="DBRENTEntities">
+    <EntitySetMapping Name="Araba">
+      <EntityTypeMapping TypeName="DBRENTModel.Araba">
+        <MappingFragment StoreEntitySet="Araba">
+          <ScalarProperty Name="carId" ColumnName="carId" />
+          <ScalarProperty Name="carMarka" ColumnName="carMarka" />
+          <ScalarProperty Name="carModel" ColumnName="carModel" />
+          <ScalarProperty Name="carYakit" ColumnName="carYakit" />
+          <ScalarProperty Name="carYolcu" ColumnName="carYolcu" />
+          <ScalarProperty Name="carKatId" ColumnName="carKatId" />
+          <ScalarProperty Name="carFiyat" ColumnName="carFiyat" />
+          <ScalarProperty Name="carTelNo" ColumnName="carTelNo" />
+          <ScalarProperty Name="carImg" ColumnName="carImg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kategori">
+      <EntityTypeMapping TypeName="DBRENTModel.Kategori">
+        <MappingFragment StoreEntitySet="Kategori">
+          <ScalarProperty Name="katId" ColumnName="katId" />
+          <ScalarProperty Name="katAdi" ColumnName="katAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kayit">
+      <EntityTypeMapping TypeName="DBRENTModel.Kayit">
+        <MappingFragment StoreEntitySet="Kayit">
+          <ScalarProperty Name="kayId" ColumnName="kayId" />
+          <ScalarProperty Name="kayCarId" ColumnName="kayCarId" />
+          <ScalarProperty Name="kayKatId" ColumnName="kayKatId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kullanici">
+      <EntityTypeMapping TypeName="DBRENTModel.Kullanici">
+        <MappingFragment StoreEntitySet="Kullanici">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="userAdi" ColumnName="userAdi" />
+          <ScalarProperty Name="userMail" ColumnName="userMail" />
+          <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+          <ScalarProperty Name="userIsAdmin" ColumnName="userIsAdmin" />
+          <ScalarProperty Name="userImage" ColumnName="userImage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

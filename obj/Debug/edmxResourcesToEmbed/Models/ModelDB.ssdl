@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBRENTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Araba">
+    <Key>
+      <PropertyRef Name="carId" />
+    </Key>
+    <Property Name="carId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="carMarka" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="carModel" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="carYakit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="carYolcu" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="carKatId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="carFiyat" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="carTelNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="carImg" Type="image" />
+  </EntityType>
+  <EntityType Name="Kategori">
+    <Key>
+      <PropertyRef Name="katId" />
+    </Key>
+    <Property Name="katId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="katAdi" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Kayit">
+    <Key>
+      <PropertyRef Name="kayId" />
+    </Key>
+    <Property Name="kayId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="kayCarId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="kayKatId" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kullanici">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="userAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="userMail" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="userPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="userIsAdmin" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="userImage" Type="image" />
+  </EntityType>
+  <Association Name="FK_Table_ToAraba">
+    <End Role="Araba" Type="Self.Araba" Multiplicity="1" />
+    <End Role="Kayit" Type="Self.Kayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Araba">
+        <PropertyRef Name="carId" />
+      </Principal>
+      <Dependent Role="Kayit">
+        <PropertyRef Name="kayCarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_ToKategori">
+    <End Role="Kategori" Type="Self.Kategori" Multiplicity="1" />
+    <End Role="Kayit" Type="Self.Kayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="katId" />
+      </Principal>
+      <Dependent Role="Kayit">
+        <PropertyRef Name="kayKatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBRENTModelStoreContainer">
+    <EntitySet Name="Araba" EntityType="Self.Araba" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kategori" EntityType="Self.Kategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kayit" EntityType="Self.Kayit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Table_ToAraba" Association="Self.FK_Table_ToAraba">
+      <End Role="Araba" EntitySet="Araba" />
+      <End Role="Kayit" EntitySet="Kayit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_ToKategori" Association="Self.FK_Table_ToKategori">
+      <End Role="Kategori" EntitySet="Kategori" />
+      <End Role="Kayit" EntitySet="Kayit" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
